@@ -12,6 +12,7 @@ const PeopleTable = ({currentPeople}) => (
         <th>died</th>
         <th>mother</th>
         <th>father</th>
+        <th>age</th>
       </tr>
     </thead>
     <tbody>
@@ -19,7 +20,7 @@ const PeopleTable = ({currentPeople}) => (
         currentPeople.map((person, index) => (
           <Person 
             index={index}
-            currentPerson={person}
+            person={person}
           />
         ))
       }
