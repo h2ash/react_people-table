@@ -12,12 +12,15 @@ const Person = ({ person, index }) => {
     'person--male': person.sex === 'm',
   })
 
-  const livedMore65 = classNames({
+  const livedMore65Styles = classNames({
     'people__lived-more-65': (person.died - person.born) > 65,
   })
 
+  const centuryStyles = classNames(
+    'person--lived-in-${person.century}-century', {})
+
   return (
-    <tr className={livedMore65} key={index}>
+    <tr className={livedMore65Styles} key={index}>
       <td>{index}</td>
       <td className={nameStyles}>{person.name}</td>
       <td className={sexStyles}>{person.sex}</td>
@@ -26,6 +29,7 @@ const Person = ({ person, index }) => {
       <td>{person.mother}</td>
       <td>{person.father}</td>
       <td>{person.died - person.born}</td>
+      <td className={centuryStyles}>{Math.ceil(person.died / 100)}</td>
     </tr>
   )
 }
