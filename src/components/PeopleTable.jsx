@@ -14,6 +14,7 @@ const PeopleTable = ({currentPeople}) => (
         <th>father</th>
         <th>age</th>
         <th>century</th>
+        <th>children</th>
       </tr>
     </thead>
     <tbody>

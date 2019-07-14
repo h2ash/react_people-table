@@ -21,3 +21,11 @@
 .people__lived-more-65 {
   border: 1px solid green;
 }
+
+.person--mother{
+
+}
+
+.person--father{
+  background: cornflowerblue;
+}
