@@ -1,14 +1,19 @@
 import React from 'react'
 
-const Person = ({currentPerson}) => (
-  <tr>
+const Person = ({currentPerson, index}) => (
+  <tr key={index}>
+    <td>{index}</td>
     <td>{currentPerson.name}</td>
-    {/* <td>{currentPerson}</td>
-    <td>{currentPerson}</td>
-    <td>{currentPerson}</td>
-    <td>{currentPerson}</td>
-    <td>{currentPerson}</td>
-    <td>{currentPerson}</td> */}
+    <td className={currentPerson.sex === 'f' 
+          ? 'person--female' 
+          : 'person--male'}
+    >
+      {currentPerson.sex}
+    </td>
+    <td>{currentPerson.born}</td>
+    <td>{currentPerson.died}</td>
+    <td>{currentPerson.mother}</td>
+    <td>{currentPerson.father}</td>
   </tr>
 )
 

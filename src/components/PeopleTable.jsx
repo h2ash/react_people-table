@@ -16,8 +16,11 @@ const PeopleTable = ({currentPeople}) => (
     </thead>
     <tbody>
       {
-        currentPeople.map(person => (
-          <Person currentPerson={person} />
+        currentPeople.map((person, index) => (
+          <Person 
+            index={index}
+            currentPerson={person}
+          />
         ))
       }
     </tbody>

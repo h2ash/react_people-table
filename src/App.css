@@ -1,3 +1,11 @@
 .PeopleTable {
   border-collapse: collapse;
 }
+
+.person--male {
+  
+}
+
+.person--female {
+  background: lightpink;
+}

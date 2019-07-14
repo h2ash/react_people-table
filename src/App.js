@@ -1,6 +1,6 @@
 import React from 'react';
 import PeopleTable from './components/PeopleTable'
-
+import './App.css'
 
 class App extends React.Component {
   state = {
