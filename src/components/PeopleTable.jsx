@@ -1,9 +1,12 @@
 import React from 'react'
 import Person from './Person'
 
-const PeopleTable = ({currentPeople, filteredPeople}) => (
+const PeopleTable = ({people, inputValue, handleInput, filteredBySearch}) => (
   <>
-    <input onChange={filteredPeople} type="text"/>
+    <label htmlFor="">
+      Search:
+      <input value={inputValue} onChange={handleInput} type="text"/>
+    </label>
     <table className='PeopleTable'>
       <thead>
         <tr>
@@ -21,7 +24,7 @@ const PeopleTable = ({currentPeople, filteredPeople}) => (
       </thead>
       <tbody>
         {
-          currentPeople.map((person, index) => (
+          filteredBySearch.map((person, index) => (
             <Person 
               index={index}
               person={person}

@@ -32,7 +32,10 @@ const Person = ({ person, index }) => {
       <td>{person.father}</td>
       <td>{person.age}</td>
       <td className={centuryStyles}>{person.century}</td>
-      <td>{person.children.map(child => `${child.name}, `)}</td>
+      <td>{(person.children.map(child => `${child.name}, `)) !== '' 
+        ? person.children.map(child => `${child.name}, `)
+        : 'unknown' }
+      </td>
     </tr>
   )
 }
