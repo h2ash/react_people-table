@@ -5,6 +5,7 @@ import './App.css'
 class App extends React.Component {
   state = {
     people: [],
+    filteredPeople: [],
   }
 
   componentDidMount() {
@@ -25,6 +26,8 @@ class App extends React.Component {
     this.setState({
       people: peopleWithOtherColumns,
     })
+
+  
   }
 
   render() {

@@ -3,7 +3,6 @@
 }
 
 .person--male {
-  
 }
 
 .person--female {
@@ -19,11 +18,10 @@
 }
 
 .people__lived-more-65 {
-  border: 1px solid green;
+  border: 3px solid green;
 }
 
 .person--mother{
-
 }
 
 .person--father{

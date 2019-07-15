@@ -12,20 +12,17 @@ const Person = ({ person, index }) => {
     'person--male': person.sex === 'm',
   })
 
-  const livedMore65Styles = classNames({
+  const generalStyles = classNames({
     'people__lived-more-65': person.age > 65,
-  })
-
-  const centuryStyles = classNames(
-    'person--lived-in-${person.century}-century')
-
-  const checkIsParent = classNames({
     'person--father': person.children.length && person.sex === 'm',
     'person--mother': person.children.length && person.sex === 'f',
   })
 
+  const centuryStyles = classNames(
+    `person--lived-in-${person.century}-century`)
+
   return (
-    <tr className={(livedMore65Styles, checkIsParent)} key={index}>
+    <tr className={generalStyles} key={index}>
       <td>{index}</td>
       <td className={nameStyles}>{person.name}</td>
       <td className={sexStyles}>{person.sex}</td>
