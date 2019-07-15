@@ -7,25 +7,23 @@ const Person = ({ person, index }) => {
     'people__died-after-1800': person.died > 1800,
   })
 
-  const sexStyles = classNames({
-    'person--female': person.sex === 'f',
-    'person--male': person.sex === 'm',
-  })
-
   const generalStyles = classNames({
     'people__lived-more-65': person.age > 65,
     'person--father': person.children.length && person.sex === 'm',
     'person--mother': person.children.length && person.sex === 'f',
+    'person--female': person.sex === 'f',
+    'person--male': person.sex === 'm',
   })
 
   const centuryStyles = classNames(
     `person--lived-in-${person.century}-century`)
 
+  console.log(person);
   return (
     <tr className={generalStyles} key={index}>
-      <td>{index}</td>
+      <td>{person.id}</td>
       <td className={nameStyles}>{person.name}</td>
-      <td className={sexStyles}>{person.sex}</td>
+      <td className={generalStyles}>{person.sex}</td>
       <td>{person.born}</td>
       <td>{person.died}</td>
       <td>{person.mother}</td>
