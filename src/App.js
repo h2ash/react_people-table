@@ -13,15 +13,17 @@ class App extends React.Component {
     this.loadData()
   }
 
-  // searchFunc() {
-    
-  // }
-
   handleInput = (event) => {
     const {value} = event.target;
     this.setState(prevState => ({
       inputValue: value,
-      filteredBySearch: [...prevState.people].filter(person => person.name.toLowerCase().includes(value.toLowerCase())),
+      filteredBySearch: [...prevState.people].filter(person => 
+        person.name.toLowerCase().includes(value.toLowerCase())
+        || (person.mother ? person.mother
+          .toLowerCase().includes(value.toLowerCase()) : false)
+        || (person.father ? person.father
+          .toLowerCase().includes(value.toLowerCase()) : false)
+      ),
     }))
   }
 
@@ -40,8 +42,6 @@ class App extends React.Component {
       people: peopleWithOtherColumns,
       filteredBySearch: peopleWithOtherColumns,
     })
-
-  
   }
 
   render() {
