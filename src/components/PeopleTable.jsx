@@ -10,14 +10,14 @@ const PeopleTable = ({people, inputValue, handleInput, filteredBySearch, sortFun
     <table className='PeopleTable'>
       <thead>
         <tr>
-          <th>id</th>
+          <th onClick={() => sortFunc('id')}>id</th>
           <th onClick={() => sortFunc('name')}>name</th>
           <th>sex</th>
-          <th>born</th>
-          <th>died</th>
+          <th onClick={() => sortFunc('born')}>born</th>
+          <th onClick={() => sortFunc('died')}>died</th>
           <th>mother</th>
           <th>father</th>
-          <th>age</th>
+          <th onClick={() => sortFunc('age')}>age</th>
           <th>century</th>
           <th>children</th>
         </tr>

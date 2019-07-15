@@ -18,11 +18,17 @@ class App extends React.Component {
     this.setState(prevState => ({
       direction: prevState.direction === 1 ? -1 : 1,
       filteredBySearch: [...prevState.filteredBySearch].sort((a,b) => {
-        switch(sortBy) {
+        switch(sortBy) { // колхоз-стайл, поправлю потом
           case 'name':
             return a.name.localeCompare(b.name) * prevState.direction;
-          // case 'id':
-          //   return a.id - b.id
+          case 'id':
+            return a.id - b.id * prevState.direction;
+          case 'age':
+            return a.age - b.age * prevState.direction;
+          case 'born':
+            return a.born - b.born * prevState.direction;
+          case 'died':
+            return a.died - b.died * prevState.direction;
           default: 
             return 0;
         }
