@@ -8,10 +8,17 @@ class App extends React.Component {
     filteredBySearch: [],
     inputValue: '',
     direction: 1,
+    selectedId: '',
   }
 
   componentDidMount = () => {
     this.loadData()
+  }
+
+  selectFunc = (value) => {
+    this.setState({
+      selectedId: value,
+    })
   }
 
   sortFunc = (sortBy) => {
@@ -71,7 +78,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {inputValue, people, filteredBySearch} = this.state;
+    const {inputValue, people, filteredBySearch, selectedId} = this.state;
     return (
       <div>
         <PeopleTable 
@@ -80,6 +87,8 @@ class App extends React.Component {
           filteredBySearch={filteredBySearch}
           handleInput={this.handleInput}
           sortFunc={this.sortFunc}
+          selectedId={selectedId}
+          selectFunc={this.selectFunc}
           />
       </div>
     )

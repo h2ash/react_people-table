@@ -1,26 +1,26 @@
 import React from 'react'
 import classNames from 'classnames';
 
-const Person = ({ person, index }) => {
+const Person = ({ person, index, selectedId, selectFunc }) => {
   const nameStyles = classNames({
-    'people__born-before-1650': person.born < 1650,
-    'people__died-after-1800': person.died > 1800,
+    'people--born-before-1650': person.born < 1650,
+    'people--died-after-1800': person.died > 1800,
   })
 
   const generalStyles = classNames({
-    'people__lived-more-65': person.age > 65,
+    'people--lived-more-65': person.age > 65,
     'person--father': person.children.length && person.sex === 'm',
     'person--mother': person.children.length && person.sex === 'f',
     'person--female': person.sex === 'f',
     'person--male': person.sex === 'm',
+    'person--selected': person.id === selectedId,
   })
 
   const centuryStyles = classNames(
     `person--lived-in-${person.century}-century`)
 
-  console.log(person);
   return (
-    <tr className={generalStyles} key={index}>
+    <tr onClick={() => selectFunc(person.id)} className={generalStyles} key={index}>
       <td>{person.id}</td>
       <td className={nameStyles}>{person.name}</td>
       <td className={generalStyles}>{person.sex}</td>
