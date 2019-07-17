@@ -18,7 +18,7 @@
 }
 
 .people--lived-more-65 {
-  border: 3px solid green;
+  border: 2px solid green;
 }
 
 .person--mother{
@@ -29,5 +29,5 @@
 }
 
 .person--selected {
-  border: 5px solid blue; 
+  border: 3px solid blue; 
 }

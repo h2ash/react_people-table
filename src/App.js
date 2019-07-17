@@ -21,42 +21,6 @@ class App extends React.Component {
     })
   }
 
-  sortFunc = (sortBy) => {
-    this.setState(prevState => ({
-      direction: prevState.direction === 1 ? -1 : 1,
-      filteredBySearch: [...prevState.filteredBySearch].sort((a,b) => {
-        switch(sortBy) { // колхоз-стайл, поправлю потом
-          case 'name':
-            return a.name.localeCompare(b.name) * prevState.direction;
-          case 'id':
-            return a.id - b.id * prevState.direction;
-          case 'age':
-            return a.age - b.age * prevState.direction;
-          case 'born':
-            return a.born - b.born * prevState.direction;
-          case 'died':
-            return a.died - b.died * prevState.direction;
-          default: 
-            return 0;
-        }
-      })
-    }))
-  } 
-
-  handleInput = (event) => {
-    const {value} = event.target;
-    this.setState(prevState => ({
-      inputValue: value,
-      filteredBySearch: [...prevState.people].filter(person => 
-        person.name.toLowerCase().includes(value.toLowerCase())
-        || (person.mother ? person.mother
-          .toLowerCase().includes(value.toLowerCase()) : false)
-        || (person.father ? person.father
-          .toLowerCase().includes(value.toLowerCase()) : false)
-      ),
-    }))
-  }
-
   loadData = async () => {
     const responsePeople = await 
       fetch('https://mate-academy.github.io/react_people-table/api/people.json');
@@ -76,6 +40,42 @@ class App extends React.Component {
       filteredBySearch: peopleWithOtherColumns,
     })
   }
+
+  handleInput = (event) => {
+    const {value} = event.target;
+    this.setState(prevState => ({
+      inputValue: value,
+      filteredBySearch: [...prevState.people].filter(person => 
+        person.name.toLowerCase().includes(value.toLowerCase())
+        || (person.mother ? person.mother
+          .toLowerCase().includes(value.toLowerCase()) : false)
+        || (person.father ? person.father
+          .toLowerCase().includes(value.toLowerCase()) : false)
+      ),
+    }))
+  }
+  
+  sortFunc = (sortField) => {
+    this.setState(prevState => ({
+      direction: prevState.direction === 1 ? -1 : 1,
+      filteredBySearch: [...prevState.filteredBySearch].sort((a,b) => {
+        
+        const valueA = a[sortField];
+        const valueB = b[sortField];
+
+        switch(typeof valueA) {
+          case 'string':
+            return valueA.localeCompare(valueB) * prevState.direction;
+          case 'number':
+          case 'boolean':
+            return (valueA - valueB) * prevState.direction;
+
+          default: 
+            return 0;
+        }
+      })
+    }))
+  } 
 
   render() {
     const {inputValue, people, filteredBySearch, selectedId} = this.state;
