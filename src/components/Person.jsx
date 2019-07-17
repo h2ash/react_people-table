@@ -30,9 +30,7 @@ const Person = ({ person, index, selectedId, selectFunc }) => {
       <td>{person.father}</td>
       <td>{person.age}</td>
       <td className={centuryStyles}>{person.century}</td>
-      <td>{(person.children.map(child => `${child.name}, `)) !== '' 
-        ? person.children.map(child => `${child.name}, `)
-        : 'unknown' }
+      <td>{person.children.map(child => child.name).join(', ') || 'unknown'}
       </td>
     </tr>
   )
