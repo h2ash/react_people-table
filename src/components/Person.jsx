@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
 import classNames from 'classnames';
 
-const Person = ({ person, index, selectedId, selectFunc }) => {
+const Person = ({
+  person, index, selectedId, selectFunc,
+}) => {
   const nameStyles = classNames({
     'people--born-before-1650': person.born < 1650,
     'people--died-after-1800': person.died > 1800,
-  })
+  });
 
   const generalStyles = classNames({
     'people--lived-more-65': person.age > 65,
@@ -14,13 +16,18 @@ const Person = ({ person, index, selectedId, selectFunc }) => {
     'person--female': person.sex === 'f',
     'person--male': person.sex === 'm',
     'person--selected': person.id === selectedId,
-  })
+  });
 
   const centuryStyles = classNames(
-    `person--lived-in-${person.century}-century`)
+    `person--lived-in-${person.century}-century`
+  );
 
   return (
-    <tr onClick={() => selectFunc(person.id)} className={generalStyles} key={index}>
+    <tr
+      onClick={() => selectFunc(person.id)}
+      className={generalStyles}
+      key={index}
+    >
       <td>{person.id}</td>
       <td className={nameStyles}>{person.name}</td>
       <td className={generalStyles}>{person.sex}</td>
@@ -30,10 +37,11 @@ const Person = ({ person, index, selectedId, selectFunc }) => {
       <td>{person.father}</td>
       <td>{person.age}</td>
       <td className={centuryStyles}>{person.century}</td>
-      <td>{person.children.map(child => child.name).join(', ') || 'unknown'}
+      <td>
+        {person.children.map(child => child.name).join(', ') || 'unknown'}
       </td>
     </tr>
-  )
-}
+  );
+};
 
-export default Person
+export default Person;

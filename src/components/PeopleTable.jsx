@@ -3,7 +3,6 @@ import Person from './Person';
 
 const PeopleTable
   = ({
-    people,
     inputValue,
     handleInput,
     filteredBySearch,
