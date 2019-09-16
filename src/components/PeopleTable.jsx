@@ -1,21 +1,22 @@
-import React from 'react'
-import Person from './Person'
+import React from 'react';
+import Person from './Person';
 
-const PeopleTable = 
-  ({people, 
-  inputValue, 
-  handleInput, 
-  filteredBySearch, 
-  sortFunc, 
-  selectedId, 
-  selectFunc
+const PeopleTable
+  = ({
+    people,
+    inputValue,
+    handleInput,
+    filteredBySearch,
+    sortFunc,
+    selectedId,
+    selectFunc,
   }) => (
     <>
       <label htmlFor="">
         Search:
-        <input value={inputValue} onChange={handleInput} type="text"/>
+        <input value={inputValue} onChange={handleInput} type="text" />
       </label>
-      <table className='PeopleTable'>
+      <table className="PeopleTable">
         <thead>
           <tr>
             <th onClick={() => sortFunc('id')}>id</th>
@@ -33,7 +34,7 @@ const PeopleTable =
         <tbody>
           {
             filteredBySearch.map((person, index) => (
-              <Person 
+              <Person
                 index={(index + 1)}
                 person={person}
                 selectedId={selectedId}
@@ -44,6 +45,6 @@ const PeopleTable =
         </tbody>
       </table>
     </>
-)
+  );
 
-export default PeopleTable
+export default PeopleTable;
